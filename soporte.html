@@ -1,51 +1,384 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Soporte — Velo Bot</title>
+<title>Velo Bot — Legal</title>
 <style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#0e1024;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100vh;
-  text-align:center;
-}
-.box{
-  background:#141630;
-  padding:40px;
-  border-radius:16px;
-  max-width:400px;
-}
-a{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 20px;
-  border-radius:10px;
-  background:#4f6ef7;
-  color:#fff;
-  text-decoration:none;
-  font-weight:bold;
-}
-a:hover{
-  background:#6b85ff;
-}
+  :root {
+    --bg: #0e0f13;
+    --surface: #16181d;
+    --surface2: #1e2028;
+    --border: #2a2d35;
+    --accent: #5865F2;
+    --accent2: #4752c4;
+    --text: #e3e5e8;
+    --muted: #8e9297;
+    --green: #2ecc71;
+    --red: #e74c3c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.7; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(14,15,19,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 64px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .nav-title { font-size: 1.15rem; font-weight: 700; color: var(--text); }
+  .nav-links { display: flex; gap: 0.5rem; }
+  .nav-links a { color: var(--muted); text-decoration: none; padding: 6px 14px; border-radius: 6px; font-size: 0.9rem; transition: all .2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--surface2); }
+
+  /* HERO */
+  .hero {
+    text-align: center; padding: 5rem 2rem 3rem;
+    background: linear-gradient(180deg, rgba(88,101,242,0.08) 0%, transparent 100%);
+  }
+  .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { color: var(--muted); font-size: 1.05rem; max-width: 560px; margin: 0 auto 1.5rem; }
+  .hero-meta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .badge { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 4px 14px; font-size: 0.82rem; color: var(--muted); }
+
+  /* TABS */
+  .tabs-wrap { position: sticky; top: 64px; z-index: 90; background: var(--bg); border-bottom: 1px solid var(--border); }
+  .tabs { display: flex; max-width: 900px; margin: 0 auto; padding: 0 2rem; overflow-x: auto; gap: 0; }
+  .tab-btn {
+    padding: 1rem 1.4rem; border: none; background: none; color: var(--muted);
+    font-size: 0.9rem; cursor: pointer; border-bottom: 2px solid transparent;
+    transition: all .2s; white-space: nowrap; font-family: inherit;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* CONTENT */
+  .content { max-width: 900px; margin: 0 auto; padding: 2rem; }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* CARDS */
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem;
+  }
+  .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.2rem; }
+  .card-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(88,101,242,0.15); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .card h2 { font-size: 1.15rem; font-weight: 700; }
+  .card h3 { font-size: 1rem; font-weight: 600; margin: 1.2rem 0 0.5rem; color: var(--text); }
+  .card p { color: var(--muted); font-size: 0.93rem; margin-bottom: 0.8rem; }
+  .card p:last-child { margin-bottom: 0; }
+  .card ul, .card ol { color: var(--muted); font-size: 0.93rem; padding-left: 1.4rem; }
+  .card li { margin-bottom: 0.4rem; }
+  .card a { color: var(--accent); text-decoration: none; }
+  .card a:hover { text-decoration: underline; }
+
+  /* HIGHLIGHT BOXES */
+  .highlight { background: rgba(88,101,242,0.08); border: 1px solid rgba(88,101,242,0.25); border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.9rem; color: var(--text); }
+  .highlight.green { background: rgba(46,204,113,0.08); border-color: rgba(46,204,113,0.25); }
+  .highlight.red   { background: rgba(231,76,60,0.08);  border-color: rgba(231,76,60,0.25);  }
+
+  /* SUPPORT BANNER */
+  .support-banner {
+    background: linear-gradient(135deg, rgba(88,101,242,0.15), rgba(88,101,242,0.05));
+    border: 1px solid rgba(88,101,242,0.3); border-radius: 16px;
+    padding: 2.5rem; text-align: center; margin: 2rem 0;
+  }
+  .support-banner h3 { font-size: 1.4rem; margin-bottom: 0.6rem; }
+  .support-banner p { color: var(--muted); margin-bottom: 1.5rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff; text-decoration: none;
+    padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+    transition: background .2s;
+  }
+  .btn:hover { background: var(--accent2); }
+  .btn.outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+  .btn.outline:hover { background: rgba(88,101,242,0.1); }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th { text-align: left; padding: 10px 14px; background: var(--surface2); color: var(--muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 10px 14px; border-top: 1px solid var(--border); color: var(--muted); }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 3rem 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2rem; }
+    nav { padding: 0 1rem; }
+    .content { padding: 1.5rem 1rem; }
+  }
 </style>
 </head>
 <body>
-  <div class="box">
-    <h1>💬 Soporte</h1>
-    <p>¿Necesitas ayuda con Velo?</p>
-    <p>Únete a nuestro servidor de soporte en Discord:</p>
 
-    <a href="https://konect.gg/itzU5m1n_" target="_blank">
-      🚀 Ir al soporte
-    </a>
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-logo">🤖</div>
+    <span class="nav-title">Velo Bot</span>
+  </a>
+  <div class="nav-links">
+    <a href="https://dsc.gg/velobot" target="_blank">Community</a>
   </div>
+</nav>
+
+<div class="hero">
+  <h1>Velo Bot <span>Legal</span></h1>
+  <p>Terms of Service, Privacy Policy, and Cookie Policy for using Velo Bot on Discord.</p>
+  <div class="hero-meta">
+    <span class="badge">📅 Last updated: May 2026</span>
+    <span class="badge">🌍 English</span>
+    <span class="badge">⚖️ Legal documents</span>
+  </div>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('terms')">📋 Terms of Service</button>
+    <button class="tab-btn" onclick="showTab('privacy')">🔒 Privacy Policy</button>
+    <button class="tab-btn" onclick="showTab('cookies')">🍪 Cookie Policy</button>
+    <button class="tab-btn" onclick="showTab('conduct')">🛡️ Community Guidelines</button>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- TERMS OF SERVICE -->
+  <div id="terms" class="section active">
+    <div class="card">
+      <div class="card-header"><div class="card-icon">📋</div><h2>Terms of Service</h2></div>
+      <p>By inviting or using Velo Bot ("the Bot") on any Discord server, you agree to these Terms of Service. If you do not agree, please remove the Bot from your server immediately.</p>
+      <div class="highlight">These terms apply to all users who interact with Velo Bot, including server administrators, moderators, and regular members.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">✅</div><h2>1. Acceptable Use</h2></div>
+      <p>You may use Velo Bot for lawful purposes that comply with Discord's <a href="https://discord.com/terms" target="_blank">Terms of Service</a> and <a href="https://discord.com/guidelines" target="_blank">Community Guidelines</a>.</p>
+      <h3>Permitted uses:</h3>
+      <ul>
+        <li>Server moderation and management</li>
+        <li>Welcome messages and member onboarding</li>
+        <li>Ticket systems for support</li>
+        <li>Notifications and announcements</li>
+        <li>AI-powered conversations for assistance</li>
+      </ul>
+      <h3>Prohibited uses:</h3>
+      <ul>
+        <li>Harassment, abuse, or threats against any user</li>
+        <li>Distribution of illegal, harmful, or offensive content</li>
+        <li>Attempting to exploit, reverse-engineer, or disrupt the Bot</li>
+        <li>Using the Bot to spam, phish, or scam users</li>
+        <li>Circumventing moderation or safety systems</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">⚙️</div><h2>2. Service Availability</h2></div>
+      <p>Velo Bot is provided "as is" without warranties of any kind. We do not guarantee uninterrupted or error-free service. The Bot may be temporarily unavailable for maintenance, updates, or technical issues.</p>
+      <div class="highlight red">We reserve the right to discontinue, modify, or restrict access to the Bot at any time without prior notice.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🚫</div><h2>3. Termination</h2></div>
+      <p>We reserve the right to terminate or restrict your access to Velo Bot if you violate these Terms of Service. This includes banning specific users or servers from using the Bot.</p>
+      <p>You may remove the Bot from your server at any time, which will terminate your use of the service.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">⚖️</div><h2>4. Limitation of Liability</h2></div>
+      <p>To the maximum extent permitted by applicable law, Velo Bot and its creators shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the Bot.</p>
+      <p>This includes, but is not limited to, loss of data, revenue, or reputation.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🔄</div><h2>5. Changes to Terms</h2></div>
+      <p>We may update these Terms at any time. Continued use of Velo Bot after changes constitutes acceptance of the new Terms. We recommend checking this page periodically.</p>
+    </div>
+  </div>
+
+  <!-- PRIVACY POLICY -->
+  <div id="privacy" class="section">
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🔒</div><h2>Privacy Policy</h2></div>
+      <p>This Privacy Policy explains what data Velo Bot collects, how it is used, and your rights regarding that data.</p>
+      <div class="highlight green">We are committed to protecting your privacy. We collect only the minimum data necessary to provide the Bot's features.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">📊</div><h2>1. Data We Collect</h2></div>
+      <table>
+        <tr><th>Data Type</th><th>Purpose</th><th>Retention</th></tr>
+        <tr><td>Server (Guild) ID</td><td>Bot configuration per server</td><td>Until Bot is removed</td></tr>
+        <tr><td>User ID</td><td>Warnings, tickets, preferences</td><td>Until deletion requested</td></tr>
+        <tr><td>Channel IDs</td><td>Log, welcome, AI, ticket channels</td><td>Until reconfigured</td></tr>
+        <tr><td>Message content</td><td>AI conversations (in memory only)</td><td>Cleared at midnight daily</td></tr>
+        <tr><td>Ticket transcripts</td><td>Moderation records</td><td>Until manually deleted</td></tr>
+        <tr><td>Warning records</td><td>Moderation history</td><td>Until cleared by staff</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🤖</div><h2>2. AI Conversations</h2></div>
+      <p>When you use the AI feature (mentioning Velo in the configured channel or via DM), your messages are processed by third-party AI providers (OpenAI, Groq).</p>
+      <div class="highlight red">AI conversation history is stored in memory only and cleared every midnight. We do not permanently store your AI conversations in our database.</div>
+      <p>By using the AI feature, you also agree to the privacy policies of:</p>
+      <ul>
+        <li><a href="https://openai.com/privacy" target="_blank">OpenAI Privacy Policy</a></li>
+        <li><a href="https://groq.com/privacy-policy/" target="_blank">Groq Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🔧</div><h2>3. How We Use Data</h2></div>
+      <ul>
+        <li>Providing and improving Bot features</li>
+        <li>Moderation tools (warnings, bans, tickets)</li>
+        <li>Sending notifications and welcome messages</li>
+        <li>Debugging and error tracking</li>
+      </ul>
+      <p>We do not sell, rent, or share your data with third parties for commercial purposes.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🗑️</div><h2>4. Data Deletion</h2></div>
+      <p>You can request deletion of your data at any time by contacting us through our support channel. Server administrators can also delete server-specific data by removing the Bot and contacting us.</p>
+      <div class="highlight">To request data deletion, contact us at: <a href="https://dsc.gg/velobot" target="_blank">https://konect.gg/itzU5m1n_</a></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🔐</div><h2>5. Data Security</h2></div>
+      <p>We implement reasonable security measures to protect your data, including encrypted database connections and restricted access to production systems.</p>
+      <p>However, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security of your data.</p>
+    </div>
+  </div>
+
+  <!-- COOKIE POLICY -->
+  <div id="cookies" class="section">
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🍪</div><h2>Cookie Policy</h2></div>
+      <p>This Cookie Policy applies to the Velo Bot dashboard and web pages (if applicable). The Discord bot itself does not use cookies.</p>
+      <div class="highlight green">Velo Bot as a Discord bot does not use cookies. This policy applies only to any associated web interfaces.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">📌</div><h2>What Are Cookies?</h2></div>
+      <p>Cookies are small text files stored on your device when you visit a website. They help websites remember your preferences and improve your experience.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">📋</div><h2>Cookies We Use</h2></div>
+      <table>
+        <tr><th>Cookie</th><th>Type</th><th>Purpose</th></tr>
+        <tr><td>session</td><td>Essential</td><td>Dashboard authentication session</td></tr>
+        <tr><td>lang_pref</td><td>Functional</td><td>Remember your language preference</td></tr>
+        <tr><td>theme</td><td>Functional</td><td>Remember dark/light mode preference</td></tr>
+      </table>
+      <p style="margin-top:1rem;">We do not use advertising or tracking cookies.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🚫</div><h2>Managing Cookies</h2></div>
+      <p>You can control cookies through your browser settings. Disabling essential cookies may affect the functionality of the dashboard.</p>
+      <ul>
+        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Chrome</a></li>
+        <li><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank">Firefox</a></li>
+        <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471" target="_blank">Safari</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- COMMUNITY GUIDELINES -->
+  <div id="conduct" class="section">
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🛡️</div><h2>Community Guidelines</h2></div>
+      <p>These guidelines apply to all servers using Velo Bot. Server administrators are responsible for ensuring their members follow these guidelines.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">✅</div><h2>Expected Behavior</h2></div>
+      <ul>
+        <li>Treat all users with respect and dignity</li>
+        <li>Follow the rules set by server administrators</li>
+        <li>Use Bot features for their intended purpose</li>
+        <li>Report bugs or issues through proper channels</li>
+        <li>Respect the decisions of server moderators</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🚫</div><h2>Prohibited Behavior</h2></div>
+      <div class="highlight red">Violations of these guidelines may result in removal of Bot access from your server.</div>
+      <ul>
+        <li>Harassment, bullying, or hate speech toward any user</li>
+        <li>Sharing illegal, harmful, or NSFW content</li>
+        <li>Spamming Bot commands or abusing features</li>
+        <li>Attempting to exploit Bot vulnerabilities</li>
+        <li>Impersonating Bot developers or staff</li>
+        <li>Using the ticket system in bad faith</li>
+        <li>Attempting to obtain other users' personal information</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🎫</div><h2>Ticket System Rules</h2></div>
+      <ul>
+        <li>Open tickets only for legitimate support needs</li>
+        <li>Provide accurate information when creating tickets</li>
+        <li>Do not open multiple tickets for the same issue</li>
+        <li>Be patient and respectful with support staff</li>
+        <li>Close tickets when your issue is resolved</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🤖</div><h2>AI Usage Guidelines</h2></div>
+      <ul>
+        <li>Do not attempt to manipulate the AI into generating harmful content</li>
+        <li>Do not share sensitive personal information with the AI</li>
+        <li>AI responses are not professional advice — do not treat them as such</li>
+        <li>Report inappropriate AI responses to server staff</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SUPPORT BANNER -->
+  <div class="support-banner">
+    <h3>Need Help? 💬</h3>
+    <p>Have questions about these policies or need support? Our team is ready to help.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="https://dsc.gg/velobot" target="_blank" class="btn">💬 Join Community</a>
+      <a href="https://discord.com/terms" target="_blank" class="btn outline">Discord ToS</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Velo Bot by <strong>ItzU5m1n_</strong> (Usmancraft) — All rights reserved.</p>
+  <p style="margin-top:0.5rem;"><a href="https://dsc.gg/velobot">Support</a> · <a href="#" onclick="showTab('terms');return false;">Terms</a> · <a href="#" onclick="showTab('privacy');return false;">Privacy</a> · <a href="#" onclick="showTab('cookies');return false;">Cookies</a></p>
+</footer>
+
+<script>
+function showTab(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.tab-btn').forEach(b => {
+        if (b.getAttribute('onclick').includes(id)) b.classList.add('active');
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+// Handle hash navigation
+const hash = location.hash.replace('#','');
+if (['terms','privacy','cookies','conduct'].includes(hash)) showTab(hash);
+</script>
 </body>
 </html>
